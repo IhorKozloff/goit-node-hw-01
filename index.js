@@ -7,7 +7,7 @@ const { program } = require("commander");
 
 const invokeAction = async ({action, id, name, email, phone}) => {
 
-
+try {
     switch (action) {
         case "list":
             const data = await contacts.getContacts()
@@ -31,6 +31,10 @@ const invokeAction = async ({action, id, name, email, phone}) => {
 
         default: console.warn('\x1B[31m Unknown action type!');
     }
+} catch(error) {
+    console.log(error)
+}
+    
 };
 
 program
